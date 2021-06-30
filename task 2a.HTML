@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Validacija Input Polja</h1>
+<p>Unesite sledeci tekst:(Welcome (to (Morph)))</p>
+<input id="text" type="text">
+<button type="button" onclick="proveriMe()">Submit</button>
+<p id="provera"></p>
+<script>
+function proveriMe() {
+ var x, text;
+ 
+ x = document.getElementById("text").value;
+
+ if ( x == "(Welcome (to (Morph)))") {
+ text = "true";
+ } else {
+ text = "false";
+ }
+ document.getElementById("provera").innerHTML = text;
+}
+</script> 
+</body>
+</html> 
