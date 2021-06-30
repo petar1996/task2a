@@ -1,0 +1,59 @@
+<html><!DOCTYPE html>
+
+    <head>
+        <title>Password validation</title>
+        <script>
+            function validatePassword(password) {
+                
+                // It will not show anything when the length of password will be zero.
+                if (password.length === 0) {
+                    document.getElementById("UniqueID").innerHTML = "";
+                    return;
+                }
+                // Creation of new array and push all possible values in password
+                var nesto = new Array();
+                nesto .push("[$@$!%*#?&]"); // Special Charector
+                nesto .push("[A-Z]");      // Uppercase Alpabates
+                nesto .push("[0-9]");      // Numbers
+                nesto .push("[a-z]");     // Lowercase Alphabates
+                var ctr = 0;
+                for (var i = 0; i < nesto .length; i++) {
+                    if (new RegExp(nesto [i]).test(password)) {
+                        ctr++;
+                    }
+                }
+                // Display it
+                var color = "";
+                var strength = "";
+                switch (ctr) {
+                    case 0:
+                    case 1:
+                    case 2:
+                        strength = "Weak";
+                        color = "blue";
+                        break;
+                    case 3:
+                        strength = "Medium";
+                        color = "pink";
+                        break;
+                    case 4:
+                        strength = "Strong";
+                        color = "gray";
+                        break;
+                }
+                document.getElementById("UniqueID").innerHTML = strength;
+                document.getElementById("UniqueID").style.color = color;
+            }
+        </script>
+    </head>
+    <body>
+        <strong>Password validation </strong>
+        
+        <div>
+ 
+            <label for="pwd">Password:</label>
+            <input type="text" id="pwd"  onkeyup="validatePassword(this.value);"/><span id="UniqueID"></span>
+ 
+        </div>
+    </body>
+</html>
